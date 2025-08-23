@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<style>
+
+/* ── Use Cases styles ─────────────────────────────────────────────────── */
+.use-cases {
+  padding: 80px 20px;
+  background: #fff;
+  text-align: center;
+}
+.use-cases__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.use-cases__eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4f46e5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.use-cases__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+.use-cases__subtitle {
+  font-size: 1rem;
+  color: #526075;
+  margin-bottom: 2.5rem;
+}
+
+.use-cases__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.use-case {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+}
+.use-case:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+}
+
+.use-case__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.use-case__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.use-case__desc {
+  font-size: 0.9375rem;
+  color: #526075;
+  line-height: 1.5;
+}
+
+/* ────────────────────────────────────────────────────────────────────── */
+
+
+.quote-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+  transition: box-shadow .2s ease;
+}
+.quote-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.landscape-img {
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 24px;
+  margin: 40px auto;
+  border: 1px solid #e5e7eb;    /* ← add this */
+}
+
+
+  .landscape-img {
+  display: block;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 24px;
+  margin: 40px auto;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;    /* light grey outline */
+  border-radius: 16px;          /* match your other rounded corners */
+  padding: 24px;                /* gives some breathing room */
+  box-shadow: none;             /* remove any default shadow */
+  transition: box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.meetings-copy {
+  background: #f9fafb;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+
+
+  html {
+  scroll-behavior: smooth;
+}
+
+
+  @keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+}
+
+
+  .arrow-down {
+  display: block;
+  margin: 0 auto 20px;
+  width: 120px;
+  height: auto;
+  transform: rotate(0deg); /* Already points down */
+}
+
+
+.flashcard-box {
+  background-color: #fefce8;          /* your existing yellowish bg */
+  border: 1px solid #e5e7eb;          /* ← 1px grey outline */
+  border-radius: 12px;                /* match your rounded corners */
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+.flashcard-box:hover {
+  background-color: #dbeafe;
+}
+
+
+
+
+
+  /* Center the navigation links and Features dropdown at the same level */
+  .nav-center nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+  }
+  .nav-link-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: auto;
+  }
+  .nav-center nav > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blade AI waitlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="logo-4.ico">
+
+
+  <style>
+
+.nav-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.nav-center nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* spacing between dropdown and other links */
+}
+
+.nav-link-group {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link-group a,
+#notion-link {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-link-group a:hover,
+#notion-link:hover {
+  color: #1a1a1a;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link-group {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link-group a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-link-group a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+
+    nav a#notion-link:hover + .dropdown,
+.dropdown:hover {
+  display: flex;
+}
+
+nav > div:hover .dropdown {
+  display: flex;
+}
+
+
+    .feature-box {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: none; /* remove shadows for flat look */
+  padding: 30px;
+  color: #111827;
+  transition: background-color 0.3s ease;
+}
+
+.feature-box:hover {
+  background-color: #f9fafb;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.quote-section {
+  text-align: center;
+  padding: 60px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quote-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.quote-button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.quote-button:hover {
+  background-color: #333333;
+}
+
+.external-arrow {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+    .founder-title {
+  display: block;
+  margin-top: 6px;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+
+.testimonial-section {
+  background-color: #f9fafb;
+  padding: 60px 20px;
+  border-radius: 20px;
+  margin: 60px auto;
+  max-width: 1000px;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.testimonial-text {
+  flex: 1;
+}
+
+.testimonial-text h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.testimonial-text .quote {
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.testimonial-text .founder-title {
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.testimonial-image {
+  flex: 1;
+  min-width: 250px;
+}
+
+.testimonial-image img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+
+
+h1 { font-size: 3rem; font-weight: 900; }
+h2 { font-size: 1.5rem; font-weight: 700; }
+p  { font-size: 1rem; line-height: 1.6; color: #4b5563; }
+
+
+.hero-buttons a:hover {
+  transform: scale(1.05);
+  background-color: #1d4ed8;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+svg:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+    .gradient-blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, #c084fc, #6366f1);
+  border-radius: 50%;
+  top: -100px;
+  left: -100px;
+  z-index: -1;
+  filter: blur(100px);
+  opacity: 0.2;
+}
+
+
+    .hero {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.task-planner {
+  background-color: #fef6e4; /* Cream tone */
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+
+.task-planner:hover {
+  transform: translateY(-4px);
+}
+
+.feature-section {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+
+.feature-box {
+  width: 100%;
+}
+
+
+.study-chat h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-top: 10px;
+}
+
+
+.feature-box {
+  flex: 1 1 600px; /* Was 480px */
+  padding: 50px;    /* Increase padding for better scale */
+}
+
+.feature-image {
+  width: 100%;
+  max-width: none; /* Remove width limit */
+  height: auto;
+  border-radius: 20px;
+  display: block;
+}
+
+
+.feature-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 60px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.feature-box {
+  flex: 1 1 480px;
+  background-color: #fef4f2; /* default pinkish tone */
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+
+.feature-box:hover {
+  transform: translateY(-4px);
+}
+
+.feature-box h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 20px 0;
+  color: #111827;
+}
+
+.feature-tag {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e11d48;
+}
+
+.new-tag {
+  background: #fef2f2;
+  color: #e11d48;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+}
+
+.feature-image {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px;
+  display: block;
+}
+
+.study-chat {
+  background-color: #dbeafe; /* light red */
+}
+
+.essay-grader {
+  background-color: #effdf6; /* light green */
+}
+
+@media (max-width: 768px) {
+  .feature-box {
+    padding: 24px;
+  }
+
+  .feature-box h2 {
+    font-size: 1.3rem;
+  }
+}
+
+
+.study-chat-box {
+  background-color: #fef4f2; /* Beige tone like your image */
+  border-radius: 16px;
+  padding: 40px 24px;
+  margin: 60px auto;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.chat-header {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.chat-body {
+  font-size: 1rem;
+  color: #374151;
+}
+
+.hero h1 {
+  font-size: 20rem;           /* or 3.5rem for even bigger */
+  font-weight: 1000;
+  max-width: 90%;
+  margin: 0 auto 30px;
+  line-height: 1.2;          /* Optional: improves readability */
+}
+.hero p {
+  font-size: 1.1rem;         /* or 1.1rem for slightly smaller */
+  color: #4b5563;
+  max-width: 90%;
+  margin: 0 auto 30px;
+}
+
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.3;
+  }
+}
+
+
+
+.mission-name {
+  font-weight: 1000;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.mission-role {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #1a1a1a;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      flex: 1;
+    }
+
+    .nav-center {
+      position: relative;
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .nav-center nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 16px;
+      display: none;
+      flex-direction: column;
+      width: 260px;
+      z-index: 1000;
+    }
+
+    .dropdown h4 {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .dropdown-item {
+      margin-bottom: 12px;
+    }
+
+    .dropdown-item strong {
+      display: block;
+      font-size: 1rem;
+      color: #1a1a1a;
+    }
+
+    .dropdown-item span {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    nav a:hover + .dropdown, .dropdown:hover {
+      display: flex;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      flex: 1;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .btn-outline {
+      border: 1px solid #000;
+      color: #000;
+    }
+
+    .btn-primary {
+      background-color: #000;
+      color: white;
+    }
+
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      max-width: 90%;
+      margin: 0 auto 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 90%;
+      margin: 0 auto 30px;
+    }
+
+    .hero-buttons a {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .btn-blue {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    .btn-blue-light {
+      background-color: #eff6ff;
+      color: #2563eb;
+    }
+
+    .hero-image {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      width: 90%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo, .nav-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .nav-center {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-actions {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .hero-image img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  
+  <header class="header">
+    <div class="logo">Blade AI</div>
+
+    <div class="nav-center">
+      <nav>
+       <div style="position: relative;">
+  
+  <div class="dropdown">
+    <div class="dropdown-item">
+      <strong>Blade AI</strong>
+      <span>Build, write, automate</span>
+    </div>
+    <div class="dropdown-item">
+      <strong>Docs</strong>
+      <span>Simple &amp; powerful</span>
+    </div>
+    <div class="dropdown-item">
+      <strong>Wikis</strong>
+      <span>Centralise your knowledge</span>
+    </div>
+    <div class="dropdown-item">
+      <strong>Projects</strong>
+      <span>Manage any project</span>
+    </div>
+  </div>
+</div>
+
+          <!-- dropdown content -->
+        </div>
+      <div class="nav-link-group">
+        <a href="http://127.0.0.1:5501/Study%20chat%20v2%20home.html">Study Chat</a>
+  <a href="http://127.0.0.1:5501/Flashcard%20v2%20home.html">Flashcards</a>
+  <a href="http://127.0.0.1:5501/Essay%20grader%20v2%20home.html">Essay Grader</a>
+
+  <a href="http://127.0.0.1:5501/Task%20prioritizor%20home.html">Task Planner</a>
+ 
+  
+  <a href="#">FAQ</a>
+  
+  
+</div>
+
+      </nav>
+    </div>
+
+    <div class="nav-actions">
+      
+      
+    </div>
+    
+  </header>
+
+  <script>
+    const notionLink = document.getElementById('notion-link');
+    const dropdown = notionLink.nextElementSibling;
+    let dropdownTimeout;
+
+    function showDropdown() {
+      clearTimeout(dropdownTimeout);
+      dropdown.style.display = 'flex';
+    }
+
+    function hideDropdown() {
+      dropdownTimeout = setTimeout(() => {
+        dropdown.style.display = 'none';
+      }, 120);
+    }
+
+    notionLink.addEventListener('mouseenter', showDropdown);
+    notionLink.addEventListener('mouseleave', hideDropdown);
+    dropdown.addEventListener('mouseenter', showDropdown);
+    dropdown.addEventListener('mouseleave', hideDropdown);
+    dropdown.style.display = 'none';
+  </script>
+
+<section class="hero">
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 40px; padding: 40px 20px;">
+    
+    <!-- Text content -->
+    <div style="flex: 1 1 400px; max-width: 600px; text-align: left;">
+      <img src="arrow-left.png" alt="Arrow Down" class="arrow-down highlight-arrow" style="width: 80px; margin: 0 0 20px;" />
+      
+      <h1 style="font-size: 3.5rem; font-weight: 900; line-height: 1.2; margin-bottom: 20px;">
+        10X your productivity, retention and cognitive ability
+      </h1>
+      
+      <p style="font-size: 1.1rem; color: #4b5563; margin-bottom: 30px;">
+        One place where students learn, automate the busywork, and get assignments done.
+      </p>
+      
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 2px; margin-left: 4px;">
+        <span style="font-size: 0.85rem; color: #6b7280;">
+          🚀 Seen by 1.3M+ people on TikTok and Twitter
+        </span>
+        <span style="font-size: 0.85rem; color: #6b7280;">
+          ✅ Trusted by students from top schools and sixth forms.
+        </span>
+      </div>
+      <div id="waitlist-placeholder" style="margin-top:20px;"></div>
+
+    </div>
+
+    <!-- Image -->
+    <div style="flex: 1 1 300px; display: flex; justify-content: center; align-self: flex-start;">
+      <img src="man-pointing-left.png" alt="Study Theme Illustration" class="pointing" style="max-width: 600px; width: 100%; height: auto;" />
+    </div>
+
+  </div>
+</section>
+
+
+
+    </div>
+
+
+
+
+<!-- Blade AI Shortcut Image Section -->
+<div style="background-color: #ffffff; padding: 40px 20px; border: 1px solid #e5e7eb; border-radius: 16px; text-align: center; margin-top: 40px;">
+  <img src="blade-o2-landing-image.png" alt="Blade AI Keyboard Shortcut" style="max-width: 1000px; width: 100%; height: auto; border-radius: 12px;" />
+</div>
+
+<!-- Flex container for voice and flashcard section -->
+<div
+  style="
+    display: flex;
+    align-items: flex-start;    /* ← ensures both cards align to the top */
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 80px;
+    padding: 0 40px;
+  "
+>
+  <!-- Voice Chat Box -->
+  <div class="feature-card" style="flex: 1 1 400px; max-width: 480px;">
+    <img
+      src="voice-chat-image.png"
+      alt="Voice Chat"
+      style="width: 100%; border-radius: 16px;"
+    />
+    <div style="margin-top: 20px;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">
+        
+      </h2>
+      <p style="font-size: 1rem; color: #374151;">
+       
+      </p>
+    </div>
+  </div>
+
+  <!-- Flashcard Box -->
+<!-- Right: everything wrapped in one feature-card -->
+<div class="feature-card" style="flex: 1 1 600px; max-width: 700px;">
+  <img
+    src="flashcard-image.png"
+    alt="Flashcards"
+    style="width:100%; border-radius:16px; margin-bottom:16px;"
+  />
+  <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:8px;">
+    Flashcards
+  </h2>
+  <p style="font-size:1rem; color:#374151;">
+    Blade AI flashcards use spaced repetition to help you remember concepts long‑term. Efficient, structured, and AI‑assisted.
+  </p>
+</div>
+
+
+
+  <h3
+    style="
+      font-size: 2rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    "
+  >
+ <div class="feature-card" style="max-width: 1200px; margin: 40px auto;">
+  <img
+    src="essay-grader-landing.png"
+    alt="Essay Grader"
+    class="landscape-img"
+  />
+</div>
+
+    Essay Grader
+  </h3>
+<p style="font-size: 1rem; color: #526075; margin-bottom: 20px;">
+    Blade AI's Essay Grader provides instant feedback on your writing, helping you improve clarity, structure, and grammar.
+  </div>
+</section>
+
+<!-- ── Team & institutional plans section ────────────────────────────────── -->
+<section class="team-plans">
+  <div class="team-plans__inner">
+    <h2 class="team-plans__title">Institutional plans</h2>
+    <p class="team-plans__subtitle">
+      Collaborate with your research team and speed up your workflow.
+    </p>
+
+    <div class="team-plans__badges">
+      <div class="badge badge--professor">Professor</div>
+      <div class="badge badge--researcher">Researcher</div>
+    </div>
+
+    <a href="#" class="team-plans__btn">Learn more</a>
+  </div>
+</section>
+<!-- ── Use Cases section ─────────────────────────────────────────────────── -->
+<section class="use-cases" data-aos="fade-up">
+  <div class="use-cases__inner">
+    <h3 class="use-cases__eyebrow">USE CASES</h3>
+    <h2 class="use-cases__title">You’re in control</h2>
+    <p class="use-cases__subtitle">
+      Types of studies Blade AI can support you with.
+    </p>
+
+    <div class="use-cases__grid">
+      <div class="use-case">
+        <img src="UK-A-star.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">Essays</h4>
+        <p class="use-case__desc">
+          Save hours editing and proof-reading your essay with our AI essay grading tool.
+        </p>
+      </div>
+
+      <div class="use-case">
+        <img src="flashcard.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">AI flashcard creation</h4>
+        <p class="use-case__desc">
+          Create flashcards from pasting in your lecture notes, GCSE content or any other text.
+        </p>
+      </div>
+
+      <div class="use-case">
+        <img src="study-chat-landing.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">AI study chat</h4>
+        <p class="use-case__desc">
+          Ask Blade AI questions about your study material and get instant answers.
+        </p>
+      </div>
+
+      <div class="use-case">
+        <img src="task-planner-landing.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">Task planner</h4>
+        <p class="use-case__desc">
+          From disorganised mess to structured success — Blade AI helps you plan your tasks effectively using AI.
+        </p>
+      </div>
+
+     <div class="use-case">
+        <img src="streak-landing.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">Daily Streaks</h4>
+        <p class="use-case__desc">
+          Stay consistent with your study habits and track your progress over time.
+        </p>
+      </div>
+
+      <div class="use-case">
+        <img src="AI-note-summariser.png" alt="" class="use-case__icon">
+        <h4 class="use-case__title">AI - Note summariser</h4>
+        <p class="use-case__desc">
+          Summarise your lecture notes and study materials quickly and effectively.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ────────────────────────────────────────────────────────────────────── -->
+
+<style>
+  /* container */
+  .team-plans {
+    background: #0c0f2c;
+    color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .team-plans__inner {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* headings */
+  .team-plans__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .team-plans__subtitle {
+    font-size: 1.125rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+  }
+
+  /* button */
+  .team-plans__btn {
+    display: inline-block;
+    background: #4f46e5;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+  }
+  .team-plans__btn:hover {
+    background: #4338ca;
+  }
+
+  /* badges container */
+  .team-plans__badges {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* badge base */
+  .badge {
+    position: relative;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    cursor: default;
+  }
+
+  /* arrows – drawn with a rotated border */
+  .badge::after {
+    content: "";
+    position: absolute;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: block;
+    top: 50%;
+    transform-origin: center;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* professor badge & arrow */
+  .badge--professor {
+    background: #ec4899;
+    color: #fff;
+  }
+  .badge--professor::after {
+    right: -12px;
+    border-color: #ec4899;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  /* researcher badge & arrow */
+  .badge--researcher {
+    background: #38bdf8;
+    color: #0f172a;
+  }
+  .badge--researcher::after {
+    left: -12px;
+    border-color: #38bdf8;
+    transform: translateY(-50%) rotate(-135deg);
+  }
+
+  /* wiggle keyframes */
+  @keyframes wiggle {
+    0%   { transform: translateY(-50%) rotate(0deg); }
+    25%  { transform: translateY(-50%) rotate(10deg); }
+    50%  { transform: translateY(-50%) rotate(-10deg); }
+    75%  { transform: translateY(-50%) rotate(10deg); }
+    100% { transform: translateY(-50%) rotate(0deg); }
+  }
+
+  /* trigger wiggle on hover */
+  .badge:hover::after {
+    animation: wiggle 0.5s ease-in-out;
+  }
+</style>
+
+<script>
+  // If you want to trigger the wiggle in JS instead of pure CSS hover,
+  // un-comment below and remove the CSS :hover rule above.
+
+  // document.querySelectorAll('.badge').forEach(badge => {
+  //   badge.addEventListener('mouseenter', () => {
+  //     const arrow = badge;
+  //     arrow.classList.add('wiggle');
+  //   });
+  //   badge.addEventListener('animationend', () =>
+  //     badge.classList.remove('wiggle')
+  //   );
+  // });
+</script>
+<!-- ────────────────────────────────────────────────────────────────────── -->
+
+
+
+
+
+
+<!-- Testimonial Section -->
+<div class="testimonial-container" style="margin: 60px auto 0; max-width: 900px;">
+  <div class="quote-section" style="display: flex; align-items: flex-start; gap: 2rem; flex: 1;"></div>
+    <img class="quote-icon" src="quote-block.png" alt="Quote icon" style="width:48px; height:auto; margin-top:4px; flex-shrink:0;">
+    <p class="quote-text" style="font-size:2.3rem; font-weight:500; color:#111827; line-height:1.4; letter-spacing:-0.01em; margin:0;">
+      We believe that effective studying should be accessible to everyone - not just those who can afford tutors or expensive apps. Blade AI delivers intelligent, intuitive tools to help students learn faster, retain more, and study with confidence."
+    </p>
+    <div class="author-section" style="flex: none; min-width: 180px; margin-left: 2rem; text-align: left;">
+      <p class="author-info" style="font-size:1rem; line-height:1.4; margin:0;">
+        <strong style="display:block; font-weight:600; color:#000;">Mackenzey.S</strong>
+        <span style="display:block; margin-top:2px; color:#4B5563; font-weight:400;">Founder of Blade AI</span>
+      </p>
+    </div>
+  </div>
+
+<section class="quote-section">
+  <div class="quote-card">
+    <blockquote class="quote-text">
+      “This must be cheating.”
+    </blockquote>
+    <a href="cheating.html" class="quote-button">
+      Feels like cheating. Works like magic.
+      <span class="external-arrow">↗</span>
+    </a>
+  </div>
+</section>
+
+ 
+
+
+
+
+
+    <!-- Add more chat content here if needed -->
+
+
+
+
+  
+
+</section>
+
+</div>
+  </div>
+</section>
+
+</section>
+<footer style="background-color: #ffffff; padding: 60px 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.875rem;">
+
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+    
+    <!-- Logo and Socials -->
+    <div style="flex: 1; min-width: 200px;">
+   
+      <div style="color: #6b7280;">© 2025 Blade AI. All rights reserved.</div>
+    </div>
+
+    <!-- Company -->
+    <div style="flex: 1; min-width: 150px;">
+      <h4 style="font-weight: 600; margin-bottom: 10px; color: #374151;">Company</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">About us</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Careers</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Security</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Terms & Conditions</a></li>
+        <li></li><a href="http://127.0.0.1:5501/privacy%20policy%20waitlist.html" style="color: #6b7280; text-decoration: none;">Privacy Policy</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Cookie Policy</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Contact us</a></li>
+      </ul>
+    </div>
+
+    <!-- Download -->
+    <div style="flex: 1; min-width: 150px;">
+      <h4 style="font-weight: 600; margin-bottom: 10px; color: #374151;">Download</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">iOS & Android</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Mac & Windows</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Jettnotes</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div style="flex: 1; min-width: 150px;">
+      <h4 style="font-weight: 600; margin-bottom: 10px; color: #374151;">Resources</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Help Center</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Blog</a></li>
+        
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Enterprise</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Affiliates</a></li>
+      </ul>
+    </div>
+
+    <!-- Use Cases -->
+    <div style="flex: 1; min-width: 150px;">
+      <h4 style="font-weight: 600; margin-bottom: 10px; color: #374151;">Blade AI For</h4>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">GCSE</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">University</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">A-Levels</a></li>
+        <li><a href="#" style="color: #6b7280; text-decoration: none;">Parents</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Language and Legal Info -->
+  <div style="max-width: 1200px; margin: 30px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+    <div>
+      <select style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #6b7280;">
+        <option>English (UK)</option>
+        <option>English (US)</option>
+      </select>
+    </div>
+    <div style="margin-top: 10px;">
+   
+    </div>
+  </div>
+
+  <p style="margin-top: 20px; color: #6b7280;">© 2025 Blade AI. All rights reserved.</p>
+</footer>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzB49P--UXJ5r93z3BfUU_M5F0X1paVT9DK9y4s17evnWQ4Npy-2WMaxNUOej2sfC481w/exec";
+
+  // Create the input + button wrapper
+  const waitlistDiv = document.createElement('div');
+  waitlistDiv.style = "display:flex; gap:10px; justify-content:flex-start; margin:20px 0;";
+
+  const emailInput = document.createElement('input');
+  emailInput.type = "email";
+  emailInput.id = "email";
+  emailInput.placeholder = "Enter your email";
+  emailInput.style = "padding:10px; border:1px solid #e5e7eb; border-radius:6px; font-size:1rem; flex:1; max-width:260px;";
+
+  const saveBtn = document.createElement('button');
+  saveBtn.id = "save";
+  saveBtn.textContent = "Join Waitlist";
+  saveBtn.style = "padding:10px 20px; background:#2563eb; color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;";
+
+  waitlistDiv.appendChild(emailInput);
+  waitlistDiv.appendChild(saveBtn);
+
+  // 👉 Insert into the placeholder right below "Trusted by students..."
+  const waitlistPlaceholder = document.getElementById('waitlist-placeholder');
+  if (waitlistPlaceholder) {
+    waitlistPlaceholder.appendChild(waitlistDiv);
+  }
+
+  // Handle button click
+  saveBtn.addEventListener('click', async () => {
+    const email = emailInput.value.trim();
+    if (!email) {
+      alert("Please enter a valid email.");
+      return;
+    }
+
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `email=${encodeURIComponent(email)}`
+      });
+
+      if (!response.ok) throw new Error(response.statusText);
+
+      alert("Email saved!");
+      emailInput.value = '';
+    } catch (err) {
+      alert("❌ Error: " + err.message);
+    }
+  });
+</script>
+
+
+</body>
+</html>
