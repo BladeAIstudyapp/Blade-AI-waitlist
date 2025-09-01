@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <style>
+.pointing-img {
+  width: 100%;       /* take up available width */
+  max-width: 500px;  /* cap on big screens */
+  height: auto;
+  object-fit: contain;
+}
+
+  
+.pointing-img {
+  max-width: 100%;   /* never exceed the parent container width */
+  height: auto;      /* keep aspect ratio */
+  object-fit: contain;
+}
 
 /* ── Use Cases styles ─────────────────────────────────────────────────── */
 .use-cases {
@@ -921,7 +934,8 @@ svg:hover {
 
     <!-- Image -->
     <div style="flex: 1 1 300px; display: flex; justify-content: center; align-self: flex-start;">
-    <img src="images/man-pointing-left.png" alt="Study Theme Illustration" />
+   <img src="images/man-pointing-left.png" alt="Study Theme Illustration" class="pointing-img" />
+
     </div>
 
   </div>
@@ -1398,4 +1412,5 @@ svg:hover {
 
 </body>
 </html>
+
 
