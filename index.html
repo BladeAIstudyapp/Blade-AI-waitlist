@@ -8,6 +8,15 @@
 }
 
 
+.keyboard-shortcut-img {
+  display: block;
+  width: 100%;          /* scales responsively */
+  max-width: 1000px;    /* cap on desktop */
+  height: auto;         /* maintain proportions */
+  border-radius: 12px;  /* rounded corners */
+  margin: 0 auto;       /* center the image */
+  border: 1px solid #e5e7eb; /* subtle outline */
+}
 
   
 .pointing-img {
@@ -953,7 +962,10 @@ svg:hover {
 
 <!-- Blade AI Shortcut Image Section -->
 <div style="background-color: #ffffff; padding: 40px 20px; border: 1px solid #e5e7eb; border-radius: 16px; text-align: center; margin-top: 40px;">
-  <img src="blade-o2-landing-image.png" alt="Blade AI Keyboard Shortcut" style="max-width: 1000px; width: 100%; height: auto; border-radius: 12px;" />
+ <img src="images/blade-o2-landing-image.png" 
+     alt="Blade AI Keyboard Shortcut" 
+     class="keyboard-shortcut-img" />
+
 </div>
 
 <!-- Flex container for voice and flashcard section -->
@@ -1415,6 +1427,7 @@ svg:hover {
 
 </body>
 </html>
+
 
 
 
