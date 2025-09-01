@@ -6,6 +6,12 @@
   display: block;
   margin-bottom: 16px;
 }
+.feature-card-img {
+  width: 100%;        /* responsive */
+  height: auto;       /* keep aspect ratio */
+  border-radius: 16px; /* rounded corners */
+  display: block;
+}
 
 
 .keyboard-shortcut-img {
@@ -982,11 +988,11 @@ svg:hover {
 >
   <!-- Voice Chat Box -->
   <div class="feature-card" style="flex: 1 1 400px; max-width: 480px;">
-    <img
-      src="voice-chat-image.png"
-      alt="Voice Chat"
-      style="width: 100%; border-radius: 16px;"
-    />
+ <img src="images/voice-chat-image.png"
+     alt="Voice Chat"
+     class="feature-card-img" />
+
+     
     <div style="margin-top: 20px;">
       <h2 style="font-size: 1.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">
         
@@ -1427,6 +1433,7 @@ svg:hover {
 
 </body>
 </html>
+
 
 
 
