@@ -1,5 +1,7 @@
-Blade AI waitlist
+Blade AI Waitlist
 
-Blade AI — feels like cheating, works like magic.  
-Built to make studying smarter, not harder: AI flashcards, essay grading, task planning & study chat.  
-We believe in leveling out the playing field for all. To allow students to learn faster, retain more and to provide free AI-powered education. 
+Blade AI — feels like magic, works like a study partner.
+
+Built to help students study smarter, not harder, with AI-powered flashcards, essay feedback, study planning, and personalised learning tools.
+
+We believe every student deserves access to high-quality educational support. Our mission is to help level the playing field by making effective learning, better retention, and personalised academic feedback accessible to everyone.
