@@ -4641,49 +4641,8 @@
     });
 
 
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-
-  const emailInput = form.querySelector('input[type="email"]');
-  const email = emailInput.value.trim();
-
-  if (!email) {
-    success.textContent = "Please enter your email.";
-    return;
-  }
-
-  success.textContent = "Joining...";
-
-  try {
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbz0se3m8A90IOojqCTFSj3Twta-jGzxyx3xurJ1AbcHFvQG3mhX3vLWTtw9c-J-uyNIuQ/exec",
-      {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain"
-        },
-        body: JSON.stringify({
-          email: email,
-          source: "Blade AI landing page"
-        })
-      }
-    );
-
-    success.textContent =
-      "You're on the early-access list — thanks.";
-
-    form.reset();
-
-  } catch (error) {
-    console.error(error);
-
-    success.textContent =
-      "Something went wrong. Please try again.";
-  }
-});
     /*
-      Waitlist demo
+      Waitlist submission
     */
 
     const form =
@@ -4698,9 +4657,78 @@ form.addEventListener('submit', async (event) => {
       );
 
 
-    
+    form.addEventListener(
+      'submit',
+      async (event) => {
 
-  </script>
+        event.preventDefault();
+
+        const emailInput =
+          form.querySelector(
+            'input[type="email"]'
+          );
+
+        const email =
+          emailInput.value
+            .trim()
+            .toLowerCase();
+
+
+        if(!email){
+
+          success.textContent =
+            "Please enter your email.";
+
+          return;
+
+        }
+
+
+        success.textContent =
+          "Joining...";
+
+
+        try{
+
+          await fetch(
+            "https://script.google.com/macros/s/AKfycbwrqK1mI1Mf8ZHlOynSFuoGMGzrht-DVrF-mZ_bKQci0jsVBzuvh_5merc20N0M38yB2Q/exec",
+            {
+              method:"POST",
+
+              mode:"no-cors",
+
+              headers:{
+                "Content-Type":"text/plain"
+              },
+
+              body:JSON.stringify({
+                email:email,
+                source:"Blade AI landing page"
+              })
+            }
+          );
+
+
+          success.textContent =
+            "You're on the early-access list — thanks.";
+
+          form.reset();
+
+        }
+        catch(error){
+
+          console.error(error);
+
+          success.textContent =
+            "Something went wrong. Please try again.";
+
+        }
+
+      }
+    );
+
+
+</script>
 
 
 </body>
