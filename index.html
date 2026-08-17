@@ -54,7 +54,7 @@
 
 
     html{
-      scroll-behaviour:smooth;
+      scroll-behavior:smooth;
     }
 
 
@@ -118,62 +118,7 @@
     }
 
 
-    .brand{
-      display:inline-flex;
-      align-items:center;
-
-      gap:12px;
-
-      font-family:"Manrope",sans-serif;
-
-      font-size:1.35rem;
-      font-weight:800;
-
-      letter-spacing:-.05em;
-    }
-
-
-    .brand-icon{
-      width:34px;
-      height:34px;
-
-      position:relative;
-
-      flex:0 0 34px;
-    }
-
-
-    .brand-icon i{
-      position:absolute;
-
-      left:3px;
-      right:3px;
-      top:15px;
-
-      height:4px;
-
-      border-radius:999px;
-
-      background:var(--ink);
-
-      transform-origin:center;
-    }
-
-
-    .brand-icon i:nth-child(1){
-      transform:rotate(0deg);
-    }
-
-
-    .brand-icon i:nth-child(2){
-      transform:rotate(60deg);
-    }
-
-
-    .brand-icon i:nth-child(3){
-      transform:rotate(120deg);
-    }
-
+  
 
     .nav-links{
       display:flex;
@@ -2157,22 +2102,28 @@
     }
 
 
-    .faq-list details{
+    .faq-item{
       border-top:
         1px solid rgba(17,17,17,.18);
     }
 
 
-    .faq-list details:last-child{
+    .faq-item:last-child{
       border-bottom:
         1px solid rgba(17,17,17,.18);
     }
 
 
-    .faq-list summary{
-      cursor:pointer;
+    .faq-question{
+      width:100%;
 
-      list-style:none;
+      border:0;
+
+      background:transparent;
+
+      color:inherit;
+
+      cursor:pointer;
 
       padding:24px 0;
 
@@ -2182,7 +2133,11 @@
 
       font-size:1.05rem;
 
+      text-align:left;
+
       display:flex;
+
+      align-items:center;
 
       justify-content:space-between;
 
@@ -2190,35 +2145,82 @@
     }
 
 
-    .faq-list summary::-webkit-details-marker{
-      display:none;
-    }
-
-
-    .faq-list summary::after{
+    .faq-question::after{
       content:"+";
+
+      flex:0 0 auto;
 
       font-size:1.4rem;
 
+      line-height:1;
+
       font-weight:500;
+
+      transform:rotate(0deg);
+
+      transition:
+        transform .35s cubic-bezier(.4,0,.2,1);
     }
 
 
-    .faq-list details[open] summary::after{
-      content:"−";
+    .faq-item.open .faq-question::after{
+      transform:rotate(45deg);
     }
 
 
-    .faq-list p{
-      padding:0 0 24px;
+    .faq-answer{
+      display:grid;
 
+      grid-template-rows:0fr;
+
+      opacity:0;
+
+      transition:
+        grid-template-rows .42s cubic-bezier(.4,0,.2,1),
+        opacity .28s ease;
+    }
+
+
+    .faq-answer-inner{
+      overflow:hidden;
+    }
+
+
+    .faq-answer p{
       max-width:760px;
+
+      padding:0 0 24px;
 
       color:#66625b;
 
       line-height:1.65;
+
+      transform:translateY(-10px);
+
+      transition:
+        transform .42s cubic-bezier(.4,0,.2,1);
     }
 
+
+    .faq-item.open .faq-answer{
+      grid-template-rows:1fr;
+
+      opacity:1;
+    }
+
+
+    .faq-item.open .faq-answer p{
+      transform:translateY(0);
+    }
+
+
+    .faq-question:focus-visible{
+      outline:2px solid var(--violet);
+
+      outline-offset:6px;
+
+      border-radius:6px;
+    }
 
 
     /* =========================================
@@ -2575,6 +2577,13 @@
 
         transform:none;
 
+        transition:none;
+      }
+
+
+      .faq-answer,
+      .faq-answer p,
+      .faq-question::after{
         transition:none;
       }
 
@@ -2978,6 +2987,20 @@
     }
 
 </style>
+
+  <script>
+    // If we came from another Blade page and want a smooth cross-page scroll,
+    // remove the hash before the browser performs its normal instant jump.
+    (() => {
+      const smoothTarget = sessionStorage.getItem('bladeSmoothTarget');
+
+      if (smoothTarget && location.hash === `#${smoothTarget}`) {
+        sessionStorage.setItem('bladePendingSmoothTarget', smoothTarget);
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+    })();
+  </script>
+
 </head>
 
 
@@ -3015,6 +3038,10 @@
 
         <a href="#product">
           Product
+        </a>
+
+        <a href="http://127.0.0.1:5501/Pricing%20model.html">
+          Pricing
         </a>
 
         <a href="#how">
@@ -3208,7 +3235,7 @@
                     </h3>
 
                     <div class="blade-question-pills">
-                      <span class="mini-pill">30 marks</span>
+                      <span class="mini-pill">34 marks</span>
                       <span class="mini-pill">GCSE English Literature</span>
                     </div>
 
@@ -4405,127 +4432,102 @@
 
         <div class="faq-list">
 
-
-          <details>
-
-
-            <summary>
-
-              What does Blade AI mark?
-
-            </summary>
-
-
-            <p>
-
-              Blade AI is initially focused on
-              GCSE English Literature essays,
-              with plans to expand into other
-              essay-based subjects.
-
-            </p>
-
-
-          </details>
-
-
-
-          <details>
-
-
-            <summary>
-
-              Does Blade just look for keywords?
-
-            </summary>
-
-
-            <p>
-
-              The aim is to judge the quality of
-              the response as a whole — including
-              the argument, evidence, analysis and
-              relevance to the question — rather
-              than simply counting literary terms
-              or quotations.
-
-            </p>
-
-
-          </details>
-
-
-
-          <details>
-
-
-            <summary>
-
-              Will it replace teacher marking?
-
-            </summary>
-
-
-            <p>
-
-              No. Blade is designed as a practice
-              and feedback tool that students can
-              use between lessons. Teacher feedback
-              remains important.
-
-            </p>
-
-
-          </details>
-
-
-
-          <details>
-
-
-            <summary>
-
-              Which exam boards will it support?
-
-            </summary>
-
-
-            <p>
-
-              The product is being designed around
-              exam-board-specific assessment objectives
-              and question formats. The exact launch
-              coverage can be expanded as the marking
-              system is tested.
-
-            </p>
-
-
-          </details>
-
-
-
-          <details>
-
-
-            <summary>
-
-              Will Blade AI be free?
-
-            </summary>
-
-
-            <p>
-
-              The plan is to offer a free way to start,
-              with additional feedback and learning
-              features available through paid plans later.
-
-            </p>
-
-
-          </details>
-
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Do I really get one free essay grade every day?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Yes. The Free plan is designed to stay genuinely useful.
+                  You can grade one essay each day without paying.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              What is the main difference between Free and paid plans?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Free gives you the core Blade marking experience.
+                  Paid plans use more powerful AI and unlock deeper AO feedback,
+                  more detailed analysis, greater usage and additional improvement tools.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Is Plus enough for most students?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Plus is intended to be the best-value option for students who use Blade regularly.
+                  Pro is aimed at students who want Blade's deepest analysis and most advanced features.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Can I cancel?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Monthly plans are designed to be cancellable at any time.
+                  Your access would continue until the end of the billing period.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Why use Blade AI instead of ChatGPT?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  ChatGPT is general-purpose. Blade AI is built specifically for GCSE English Literature, using specialised marking algorithms tailored to the AQA mark scheme and assessment objectives. It evaluates your argument, analysis, evidence and context to give focused marking and clear next steps — without complex prompts.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Why choose Blade over other essay graders?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Blade is built to help you improve, not just give you a mark. Get AO breakdowns, paragraph-level analysis and clear next steps from a system specialised for GCSE English Literature — with powerful features at a competitive, student-friendly price.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              Will you add more subjects?
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <p>
+                  Blade is starting with GCSE English Literature,
+                  with plans to expand into more essay-based subjects over time.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
 
@@ -4641,6 +4643,40 @@
     });
 
 
+
+    /*
+      FAQ accordion
+    */
+
+    const faqItems =
+      document.querySelectorAll('.faq-item');
+
+
+    faqItems.forEach((item) => {
+
+      const button =
+        item.querySelector('.faq-question');
+
+
+      button.addEventListener('click', () => {
+
+        const isOpen =
+          item.classList.contains('open');
+
+
+        item.classList.toggle('open', !isOpen);
+
+        button.setAttribute(
+          'aria-expanded',
+          String(!isOpen)
+        );
+
+      });
+
+    });
+
+
+
     /*
       Waitlist submission
     */
@@ -4728,7 +4764,41 @@
     );
 
 
-</script>
+    /*
+      Smooth cross-page arrival from Pricing -> Product
+    */
+
+    const pendingSmoothTarget =
+      sessionStorage.getItem('bladePendingSmoothTarget');
+
+    if (pendingSmoothTarget) {
+      sessionStorage.removeItem('bladePendingSmoothTarget');
+      sessionStorage.removeItem('bladeSmoothTarget');
+
+      const targetSection =
+        document.getElementById(pendingSmoothTarget);
+
+      if (targetSection) {
+        window.scrollTo(0, 0);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            targetSection.scrollIntoView({
+              behavior:'smooth',
+              block:'start'
+            });
+
+            history.replaceState(
+              null,
+              '',
+              `${location.pathname}${location.search}#${pendingSmoothTarget}`
+            );
+          });
+        });
+      }
+    }
+
+  </script>
 
 
 </body>
